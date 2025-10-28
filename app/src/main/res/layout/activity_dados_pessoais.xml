@@ -97,7 +97,7 @@
         android:id="@+id/calcular_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calcular"
+        android:text="@string/calcular_imc"
         app:layout_constraintTop_toBottomOf="@id/nivel_atividade_sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>

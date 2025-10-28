@@ -2,10 +2,11 @@
     <string name="app_name">ImFitPlus</string>
     <string name="subtitulo">Descubra seu perfil de saúde e receba recomendações personalizadas.</string>
     <string name="comecar">Começe aqui</string>
+    <string name="calcular_imc">Calcular IMC</string>
     <string-array name="nivel_atividade">
-        <item>sedentário</item>
-        <item>leve</item>
-        <item>moderado</item>
-        <item>intenso</item>
+        <item>Sedentário</item>
+        <item>Leve</item>
+        <item>Moderado</item>
+        <item>Intenso</item>
     </string-array>
 </resources>

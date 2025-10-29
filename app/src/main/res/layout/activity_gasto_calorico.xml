@@ -5,47 +5,25 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResultadoIMCActivity">
+    tools:context=".GastoCaloricoActivity">
 
     <TextView
-        android:id="@+id/nome_tv"
+        android:id="@+id/tmb_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/imc_tv"/>
+        app:layout_constraintBottom_toTopOf="@id/calcular_peso_ideal_bt"/>
 
-    <TextView
-        android:id="@+id/imc_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nome_tv"
-        app:layout_constraintBottom_toTopOf="@id/categoria_tv"/>
-
-    <TextView
-        android:id="@+id/categoria_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imc_tv"
-        app:layout_constraintBottom_toTopOf="@id/calcular_gasto_calorico_bt"/>
-    
     <Button
-        android:id="@+id/calcular_gasto_calorico_bt"
+        android:id="@+id/calcular_peso_ideal_bt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calcular_gasto_calorico"
-        app:layout_constraintTop_toBottomOf="@id/categoria_tv"
+        android:text="@string/calcular_peso_ideal"
+        app:layout_constraintTop_toBottomOf="@id/tmb_tv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/voltar_bt"/>
@@ -55,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/voltar"
-        app:layout_constraintTop_toBottomOf="@id/calcular_gasto_calorico_bt"
+        app:layout_constraintTop_toBottomOf="@id/calcular_peso_ideal_bt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>

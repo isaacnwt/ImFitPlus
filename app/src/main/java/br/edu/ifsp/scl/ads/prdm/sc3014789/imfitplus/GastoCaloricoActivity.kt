@@ -5,43 +5,36 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityResultadoImcBinding
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityGastoCaloricoBinding
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
 
-class ResultadoIMCActivity : AppCompatActivity() {
-
-    private val arib: ActivityResultadoImcBinding by lazy {
-        ActivityResultadoImcBinding.inflate(layoutInflater)
+class GastoCaloricoActivity : AppCompatActivity() {
+    private val agcb: ActivityGastoCaloricoBinding by lazy {
+        ActivityGastoCaloricoBinding.inflate(layoutInflater)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(arib.root)
+        setContentView(agcb.root)
 
         val dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getParcelableExtra(DADOS_PESSOAIS, DadosPessoais::class.java)
         } else {
             intent.getParcelableExtra(DADOS_PESSOAIS)
         }
+
         dadosPessoais?.let {
-            with(arib) {
-                nomeTv.text = it.nome
-                imcTv.text = String.format("IMC: %.2f kg/m2", CalculoUtil.calculateIMC(it.peso, it.altura))
-                categoriaTv.text = "Categoria: ${CalculoUtil.getFormattedIMC(it.peso, it.altura)}"
-            }
+            agcb.tmbTv.text = String.format("Taxa Metabólica Basal: %.2f kcal/dia", CalculoUtil.calculateTMB(it))
         }
 
-        arib.calcularGastoCaloricoBt.setOnClickListener {
-            Intent(this, GastoCaloricoActivity::class.java).apply {
+        agcb.calcularPesoIdealBt.setOnClickListener {
+            Intent(this, PesoIdealActivity::class.java).apply {
                 putExtra(DADOS_PESSOAIS, dadosPessoais)
                 startActivity(this)
             }
         }
-
-        arib.voltarBt.setOnClickListener {
+        agcb.voltarBt.setOnClickListener {
             startActivity(Intent(this, DadosPessoaisActivity::class.java))
         }
-
     }
 }

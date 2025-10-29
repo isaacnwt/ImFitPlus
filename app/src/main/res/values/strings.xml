@@ -3,6 +3,11 @@
     <string name="subtitulo">Descubra seu perfil de saúde e receba recomendações personalizadas.</string>
     <string name="comecar">Começe aqui</string>
     <string name="calcular_imc">Calcular IMC</string>
+    <string name="calcular_gasto_calorico">Calcular Gasto Calórico</string>
+    <string name="voltar">Voltar\n</string>
+    <string name="calcular_peso_ideal">Calcular Peso Ideal</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
     <string-array name="nivel_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

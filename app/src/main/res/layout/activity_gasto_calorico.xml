@@ -5,37 +5,49 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30sp"
     tools:context=".GastoCaloricoActivity">
 
-    <TextView
-        android:id="@+id/tmb_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/calcular_peso_ideal_bt"/>
 
-    <Button
-        android:id="@+id/calcular_peso_ideal_bt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/calcular_peso_ideal"
-        app:layout_constraintTop_toBottomOf="@id/tmb_tv"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/voltar_bt"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="100sp"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/titulo_tmb_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/taxa_metabolica_basal"
+            android:textSize="30sp"/>
+        <TextView
+            android:id="@+id/tmb_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="30sp"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/voltar_bt"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/voltar"
-        app:layout_constraintTop_toBottomOf="@id/calcular_peso_ideal_bt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/calcular_peso_ideal_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/calcular_peso_ideal"/>
+
+        <Button
+            android:id="@+id/voltar_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/voltar"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

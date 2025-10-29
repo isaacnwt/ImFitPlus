@@ -24,7 +24,7 @@ class GastoCaloricoActivity : AppCompatActivity() {
         }
 
         dadosPessoais?.let {
-            agcb.tmbTv.text = String.format("Taxa Metabólica Basal: %.2f kcal/dia", CalculoUtil.calculateTMB(it))
+            agcb.tmbTv.text = String.format("%.2f kcal/dia", CalculoUtil.calculateTMB(it))
         }
 
         agcb.calcularPesoIdealBt.setOnClickListener {

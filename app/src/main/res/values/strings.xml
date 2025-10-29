@@ -8,6 +8,7 @@
     <string name="calcular_peso_ideal">Calcular Peso Ideal</string>
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
+    <string name="taxa_metabolica_basal">Taxa Metabólica Basal:</string>
     <string-array name="nivel_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

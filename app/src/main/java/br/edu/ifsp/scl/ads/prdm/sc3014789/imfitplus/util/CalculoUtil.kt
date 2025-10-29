@@ -22,4 +22,8 @@ object CalculoUtil {
             655 + (9.6 * dp.peso) + (1.8 * dp.altura * 100) - (4.7 * dp.idade)
         }
     }
+
+    fun calculatePesoIdeal(altura: Double): Double {
+        return 22 * (altura * altura)
+    }
 }

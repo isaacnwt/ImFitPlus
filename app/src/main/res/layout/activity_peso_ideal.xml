@@ -19,11 +19,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <Button
-        android:id="@+id/voltar_bt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/voltar"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <Button
+            android:id="@+id/resumo_saude_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ver_resumo_de_saude"/>
+
+        <Button
+            android:id="@+id/voltar_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/voltar"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

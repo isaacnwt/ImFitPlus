@@ -3,7 +3,7 @@ package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
 
 object CalculoUtil {
-    fun getFormattedIMC(peso: Double, altura: Double): String {
+    fun getCategoriaIMC(peso: Double, altura: Double): String {
         val imc = calculateIMC(peso, altura)
         return if (imc < 18.5) "Abaixo do peso"
         else if (imc < 24.9) "Normal"
@@ -25,5 +25,9 @@ object CalculoUtil {
 
     fun calculatePesoIdeal(altura: Double): Double {
         return 22 * (altura * altura)
+    }
+
+    fun calculateIngestaoAguaEmLitro(peso: Double): Double {
+        return 0.35 * peso
     }
 }

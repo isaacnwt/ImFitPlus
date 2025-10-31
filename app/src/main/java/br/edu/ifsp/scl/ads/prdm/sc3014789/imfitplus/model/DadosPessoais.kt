@@ -11,4 +11,8 @@ data class DadosPessoais(
     var altura: Double = 0.0,
     var peso: Double = 0.0,
     var nivelAtividade: String = "",
+    var imc: Double? = 0.0,
+    var categoriaImc: String? = "",
+    var pesoIdeal: Double? = 0.0,
+    var tmb: Double? = 0.0,
 ): Parcelable

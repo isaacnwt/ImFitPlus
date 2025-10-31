@@ -24,7 +24,9 @@ class GastoCaloricoActivity : AppCompatActivity() {
         }
 
         dadosPessoais?.let {
-            agcb.tmbTv.text = String.format("%.2f kcal/dia", CalculoUtil.calculateTMB(it))
+            val tmb = CalculoUtil.calculateTMB(it)
+            agcb.tmbTv.text = String.format("%.2f kcal/dia", tmb)
+            it.tmb = tmb
         }
 
         agcb.calcularPesoIdealBt.setOnClickListener {

@@ -9,6 +9,8 @@
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
     <string name="taxa_metabolica_basal">Taxa Metabólica Basal:</string>
+    <string name="resumo_de_saude">Resumo de Saúde</string>
+    <string name="ver_resumo_de_saude">Ver Resumo de Saúde</string>
     <string-array name="nivel_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

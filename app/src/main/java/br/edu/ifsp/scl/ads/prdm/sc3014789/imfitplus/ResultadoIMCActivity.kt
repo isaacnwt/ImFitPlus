@@ -26,11 +26,18 @@ class ResultadoIMCActivity : AppCompatActivity() {
         }
         dadosPessoais?.let {
             with(arib) {
+                val imc = CalculoUtil.calculateIMC(it.peso, it.altura)
+                val categoriaImc = CalculoUtil.getCategoriaIMC(it.peso, it.altura)
+
                 nomeTv.text = it.nome
-                imcTv.text = String.format("IMC: %.2f kg/m2", CalculoUtil.calculateIMC(it.peso, it.altura))
-                categoriaTv.text = "Categoria: ${CalculoUtil.getFormattedIMC(it.peso, it.altura)}"
+                imcTv.text = String.format("IMC: %.2f kg/m2", imc)
+                categoriaTv.text = "Categoria: $categoriaImc"
+
+                it.imc = imc
+                it.categoriaImc = categoriaImc
             }
         }
+
 
         arib.calcularGastoCaloricoBt.setOnClickListener {
             Intent(this, GastoCaloricoActivity::class.java).apply {

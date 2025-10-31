@@ -27,11 +27,20 @@ class PesoIdealActivity : AppCompatActivity() {
         }
 
         dadosPessoais?.let {
-            apib.pesoIdealTv.text = String.format("Peso Ideal: %.2f kg", CalculoUtil.calculatePesoIdeal(it.altura))
+            val pesoIdeal = CalculoUtil.calculatePesoIdeal(it.altura)
+            apib.pesoIdealTv.text = String.format("Peso Ideal: %.2f kg", pesoIdeal)
+            it.pesoIdeal = pesoIdeal
         }
 
         apib.voltarBt.setOnClickListener {
             startActivity(Intent(this, DadosPessoaisActivity::class.java))
+        }
+
+        apib.resumoSaudeBt.setOnClickListener {
+            Intent(this, ResumoSaudeActivity::class.java).apply {
+                putExtra(DADOS_PESSOAIS, dadosPessoais)
+                startActivity(this)
+            }
         }
     }
 }

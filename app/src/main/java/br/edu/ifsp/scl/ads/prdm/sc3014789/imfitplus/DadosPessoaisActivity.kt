@@ -6,12 +6,17 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.controller.DadosPessoaisController
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityDadosPessoaisBinding
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 
 class DadosPessoaisActivity : AppCompatActivity() {
     private val adpb: ActivityDadosPessoaisBinding by lazy {
         ActivityDadosPessoaisBinding.inflate(layoutInflater)
+    }
+
+    private val dadosPessoaisController: DadosPessoaisController by lazy {
+        DadosPessoaisController(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,16 +31,17 @@ class DadosPessoaisActivity : AppCompatActivity() {
                 val peso = getConvertedValue(pesoEt.text.toString(), "Peso")
                 if (nome == null || idade == null || altura == null || peso == null)
                     return@setOnClickListener
-                DadosPessoais(
-                    nome,
-                    idade,
-                    getSelectedSexo(),
-                    altura,
-                    peso,
-                    nivelAtividadeSp.selectedItem.toString(),
-                ).let { dadosPessoais ->
+                Usuario(
+                    nome = nome,
+                    idade = idade,
+                    sexo = getSelectedSexo(),
+                    altura = altura,
+                    peso = peso,
+                    nivelAtividade = nivelAtividadeSp.selectedItem.toString(),
+                ).let { usuario ->
+                    dadosPessoaisController.insertUsuario(usuario)
                     Intent(this@DadosPessoaisActivity, ResultadoIMCActivity::class.java).apply {
-                        putExtra(DADOS_PESSOAIS, dadosPessoais)
+                        putExtra(DADOS_PESSOAIS, usuario)
                         startActivity(this)
                     }
                 }

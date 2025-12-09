@@ -6,7 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityGastoCaloricoBinding
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
 
 class GastoCaloricoActivity : AppCompatActivity() {
@@ -17,13 +17,13 @@ class GastoCaloricoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(agcb.root)
 
-        val dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(DADOS_PESSOAIS, DadosPessoais::class.java)
+        val usuario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(DADOS_PESSOAIS, Usuario::class.java)
         } else {
             intent.getParcelableExtra(DADOS_PESSOAIS)
         }
 
-        dadosPessoais?.let {
+        usuario?.let {
             val tmb = CalculoUtil.calculateTMB(it)
             agcb.tmbTv.text = String.format("%.2f kcal/dia", tmb)
             it.tmb = tmb
@@ -31,7 +31,7 @@ class GastoCaloricoActivity : AppCompatActivity() {
 
         agcb.calcularPesoIdealBt.setOnClickListener {
             Intent(this, PesoIdealActivity::class.java).apply {
-                putExtra(DADOS_PESSOAIS, dadosPessoais)
+                putExtra(DADOS_PESSOAIS, usuario)
                 startActivity(this)
             }
         }

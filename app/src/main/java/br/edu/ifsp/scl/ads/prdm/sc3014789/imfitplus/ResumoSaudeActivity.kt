@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityResumoSaudeBinding
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
 
 class ResumoSaudeActivity : AppCompatActivity() {
@@ -17,13 +17,13 @@ class ResumoSaudeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(arsb.root)
 
-        val dadosPessoais = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            intent.getParcelableExtra(DADOS_PESSOAIS, DadosPessoais::class.java)
+        val usuario = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            intent.getParcelableExtra(DADOS_PESSOAIS, Usuario::class.java)
         } else {
             intent.getParcelableExtra(DADOS_PESSOAIS)
         }
 
-        dadosPessoais?.let {
+        usuario?.let {
             with(arsb) {
                 val recomendacaoAgua = CalculoUtil.calculateIngestaoAguaEmLitro(it.peso)
                 nomeTv.text = "Nome: ${it.nome}"

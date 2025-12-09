@@ -1,10 +1,15 @@
 package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class DadosPessoais(
+@Entity
+data class Usuario(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int? = -1,
     var nome: String = "",
     var idade: Int = 0,
     var sexo: String = "",

@@ -1,6 +1,6 @@
 package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util
 
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.DadosPessoais
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 
 object CalculoUtil {
     fun getCategoriaIMC(peso: Double, altura: Double): String {
@@ -15,7 +15,7 @@ object CalculoUtil {
         return peso / (altura * altura)
     }
 
-    fun calculateTMB(dp: DadosPessoais): Double {
+    fun calculateTMB(dp: Usuario): Double {
         return if (dp.sexo == "Masculino") {
             66 + (13.7 * dp.peso) + (5 * dp.altura * 100) - (6.8 * dp.idade)
         } else {

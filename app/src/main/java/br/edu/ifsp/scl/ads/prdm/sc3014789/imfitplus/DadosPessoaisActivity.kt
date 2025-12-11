@@ -6,7 +6,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
-import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.controller.DadosPessoaisController
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.controller.UsuarioController
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityDadosPessoaisBinding
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 
@@ -15,8 +15,8 @@ class DadosPessoaisActivity : AppCompatActivity() {
         ActivityDadosPessoaisBinding.inflate(layoutInflater)
     }
 
-    private val dadosPessoaisController: DadosPessoaisController by lazy {
-        DadosPessoaisController(this)
+    private val usuarioController: UsuarioController by lazy {
+        UsuarioController(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,10 +39,11 @@ class DadosPessoaisActivity : AppCompatActivity() {
                     peso = peso,
                     nivelAtividade = nivelAtividadeSp.selectedItem.toString(),
                 ).let { usuario ->
-                    dadosPessoaisController.insertUsuario(usuario)
-                    Intent(this@DadosPessoaisActivity, ResultadoIMCActivity::class.java).apply {
-                        putExtra(DADOS_PESSOAIS, usuario)
-                        startActivity(this)
+                    usuarioController.insertUsuario(usuario) { usuarioComId ->
+                        Intent(this@DadosPessoaisActivity, ResultadoIMCActivity::class.java).apply {
+                            putExtra(DADOS_PESSOAIS, usuarioComId)
+                            startActivity(this)
+                        }
                     }
                 }
             }

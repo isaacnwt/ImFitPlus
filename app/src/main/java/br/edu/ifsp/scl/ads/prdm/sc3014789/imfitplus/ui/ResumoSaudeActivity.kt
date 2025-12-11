@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus
+package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.ui
 
 import android.content.Intent
 import android.os.Build

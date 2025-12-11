@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30sp"
-    tools:context=".PesoIdealActivity">
+    tools:context=".ui.PesoIdealActivity">
 
     <TextView
         android:id="@+id/peso_ideal_tv"

@@ -14,6 +14,9 @@ interface UsuarioDao {
     @Update
     fun updateUsuario(usuario: Usuario): Int
 
-    @Query("SELECT * FROM Usuario")
+    @Query("SELECT * FROM Usuario ORDER BY dataCalculo DESC")
     fun getUsuarios(): MutableList<Usuario>
+
+    @Query("SELECT COUNT(*) FROM Usuario")
+    fun getCount(): Int
 }

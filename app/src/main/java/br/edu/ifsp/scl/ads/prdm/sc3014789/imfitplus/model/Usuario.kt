@@ -20,4 +20,5 @@ data class Usuario(
     var categoriaImc: String? = "",
     var pesoIdeal: Double? = 0.0,
     var tmb: Double? = 0.0,
+    var dataCalculo: Long = System.currentTimeMillis()
 ): Parcelable

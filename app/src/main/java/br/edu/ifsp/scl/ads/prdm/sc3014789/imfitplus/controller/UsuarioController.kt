@@ -30,4 +30,22 @@ class UsuarioController(context: Context) {
             usuarioDao.updateUsuario(usuario)
         }
     }
+
+    fun getUsuarios(onResult: (MutableList<Usuario>) -> Unit) {
+        coroutineScope.launch {
+            val usuarios = usuarioDao.getUsuarios()
+            withContext(Dispatchers.Main) {
+                onResult(usuarios)
+            }
+        }
+    }
+
+    fun hasUsuarios(onResult: (Boolean) -> Unit) {
+        coroutineScope.launch {
+            val count = usuarioDao.getCount()
+            withContext(Dispatchers.Main) {
+                onResult(count > 0)
+            }
+        }
+    }
 }

@@ -11,6 +11,8 @@
     <string name="taxa_metabolica_basal">Taxa Metabólica Basal:</string>
     <string name="resumo_de_saude">Resumo de Saúde</string>
     <string name="ver_resumo_de_saude">Ver Resumo de Saúde</string>
+    <string name="ver_historico_de_calculos">Ver Histórico de Cálculos</string>
+    <string name="novo_calculo">Novo Cálculo</string>
     <string-array name="nivel_atividade">
         <item>Sedentário</item>
         <item>Leve</item>

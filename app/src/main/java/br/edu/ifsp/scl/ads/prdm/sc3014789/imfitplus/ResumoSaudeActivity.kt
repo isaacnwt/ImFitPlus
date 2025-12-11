@@ -1,5 +1,6 @@
 package br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +34,11 @@ class ResumoSaudeActivity : AppCompatActivity() {
                 gastoCaloricoTv.text = String.format("Gasto Calórico: %.2f kcal/dia", it.tmb)
                 recomendacaoAguaTv.text = String.format("Recomendação de Ingestão de Água: %.2f L", recomendacaoAgua)
             }
+        }
+
+        arsb.verCalculosBt.setOnClickListener {
+            val intent = Intent(this, HistoricoCalculosActivity::class.java)
+            startActivity(intent)
         }
     }
 }

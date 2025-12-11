@@ -9,7 +9,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 data class Usuario(
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = -1,
+    var id: Int? = null,
     var nome: String = "",
     var idade: Int = 0,
     var sexo: String = "",

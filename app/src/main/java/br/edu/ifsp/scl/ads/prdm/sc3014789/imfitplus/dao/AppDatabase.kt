@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 
-@Database(entities = [Usuario::class], version = 2)
+@Database(entities = [Usuario::class], version = 5)
 abstract class AppDatabase: RoomDatabase() {
     abstract fun usuarioDao(): UsuarioDao
 

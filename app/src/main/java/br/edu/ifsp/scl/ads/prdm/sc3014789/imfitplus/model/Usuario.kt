@@ -11,7 +11,7 @@ data class Usuario(
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
     var nome: String = "",
-    var idade: Int = 0,
+    var dataNascimento: String = "",
     var sexo: String = "",
     var altura: Double = 0.0,
     var peso: Double = 0.0,
@@ -20,5 +20,6 @@ data class Usuario(
     var categoriaImc: String? = "",
     var pesoIdeal: Double? = 0.0,
     var tmb: Double? = 0.0,
-    var dataCalculo: Long = System.currentTimeMillis()
+    var dataCalculo: Long = System.currentTimeMillis(),
+    var frequenciaCardiacaMax: Int? = 0,
 ): Parcelable

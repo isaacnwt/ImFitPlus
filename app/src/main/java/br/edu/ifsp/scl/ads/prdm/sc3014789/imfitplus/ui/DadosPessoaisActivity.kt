@@ -9,6 +9,7 @@ import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESS
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.controller.UsuarioController
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityDadosPessoaisBinding
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
 
 class DadosPessoaisActivity : AppCompatActivity() {
     private val adpb: ActivityDadosPessoaisBinding by lazy {
@@ -26,14 +27,14 @@ class DadosPessoaisActivity : AppCompatActivity() {
         with(adpb) {
             calcularBt.setOnClickListener {
                 val nome = getNomeValue()
-                val idade = getIdadeValue()
+                val dataNascimento = getDataNascimentoValue()
                 val altura = getConvertedValue(alturaEt.text.toString(), "Altura")
                 val peso = getConvertedValue(pesoEt.text.toString(), "Peso")
-                if (nome == null || idade == null || altura == null || peso == null)
+                if (nome == null || dataNascimento == null || altura == null || peso == null)
                     return@setOnClickListener
                 Usuario(
                     nome = nome,
-                    idade = idade,
+                    dataNascimento = dataNascimento,
                     sexo = getSelectedSexo(),
                     altura = altura,
                     peso = peso,
@@ -59,25 +60,26 @@ class DadosPessoaisActivity : AppCompatActivity() {
         return nome
     }
 
-    private fun getIdadeValue(): Int? {
-        val idadeStr = adpb.idadeEt.text.toString().trim()
+    private fun getDataNascimentoValue(): String? {
+        val dataNascimentoStr = adpb.dataNascimentoEt.text.toString().trim()
 
-        if (idadeStr.isEmpty()) {
-            Toast.makeText(this, "Idade não pode ser vazia!", LENGTH_SHORT).show()
+        if (dataNascimentoStr.isEmpty()) {
+            Toast.makeText(this, "Data de nascimento não pode ser vazia!", LENGTH_SHORT).show()
             return null
         }
 
-        val idade = idadeStr.toIntOrNull()
-        if (idade == null) {
-            Toast.makeText(this, "Idade deve conter apenas números!", LENGTH_SHORT).show()
+        try {
+            val idade = CalculoUtil.calculateIdade(dataNascimentoStr)
+            if (idade <= 0) {
+                Toast.makeText(this, "Idade deve ser maior que 0!", LENGTH_SHORT).show()
+                return null
+            }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Data de nascimento inválida! Formato esperado: AAAA-MM-DD", LENGTH_SHORT).show()
             return null
         }
 
-        if (idade <= 0) {
-            Toast.makeText(this, "Idade deve ser maior que 0!", LENGTH_SHORT).show()
-            return null
-        }
-        return idade
+        return dataNascimentoStr
     }
 
     private fun getConvertedValue(value: String, fieldName: String): Double? {

@@ -27,13 +27,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/titulo_tv"
-        app:layout_constraintBottom_toBottomOf="@id/idade_et"/>
+        app:layout_constraintBottom_toBottomOf="@id/data_nascimento_et"/>
 
     <EditText
-        android:id="@+id/idade_et"
+        android:id="@+id/data_nascimento_et"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Idade"
+        android:hint="Data de nascimento (AAAA-MM-DD)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/nome_et"
@@ -48,7 +48,7 @@
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/idade_et"
+        app:layout_constraintTop_toBottomOf="@id/data_nascimento_et"
         app:layout_constraintBottom_toTopOf="@id/altura_et">
         <RadioButton
             android:id="@+id/masculino_rb"

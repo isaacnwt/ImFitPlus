@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.constant.Contants.DADOS_PESSOAIS
+import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.controller.UsuarioController
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.databinding.ActivityResumoSaudeBinding
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.model.Usuario
 import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
@@ -12,6 +13,10 @@ import br.edu.ifsp.scl.ads.prdm.sc3014789.imfitplus.util.CalculoUtil
 class ResumoSaudeActivity : AppCompatActivity() {
     private val arsb: ActivityResumoSaudeBinding by lazy {
         ActivityResumoSaudeBinding.inflate(layoutInflater)
+    }
+
+    private val usuarioController: UsuarioController by lazy {
+        UsuarioController(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,15 +29,27 @@ class ResumoSaudeActivity : AppCompatActivity() {
             intent.getParcelableExtra(DADOS_PESSOAIS)
         }
 
+
         usuario?.let {
             with(arsb) {
                 val recomendacaoAgua = CalculoUtil.calculateIngestaoAguaEmLitro(it.peso)
+                val freqCardMax = CalculoUtil.calculateFCMax(CalculoUtil.calculateIdade(it.dataNascimento))
+
+                it.frequenciaCardiacaMax = freqCardMax
+
+                usuarioController.updateUsuario(it)
+
                 nomeTv.text = "Nome: ${it.nome}"
                 imcTv.text = String.format("IMC: %.2f kg/m2", it.imc)
                 categoriaImcTv.text = "Categoria: ${it.categoriaImc}"
                 pesoIdealTv.text = String.format("Peso Ideal: %.2f kg", it.pesoIdeal)
                 gastoCaloricoTv.text = String.format("Gasto Calórico: %.2f kcal/dia", it.tmb)
                 recomendacaoAguaTv.text = String.format("Recomendação de Ingestão de Água: %.2f L", recomendacaoAgua)
+                frequenciaCardiacaMaxTv.text = "Frequência Cardíaca Máxima: ${freqCardMax}"
+                zonaLeveTv.text = "Zona Leve: ${freqCardMax * 0.5} - ${freqCardMax * 0.6}"
+                zonaQueimaGorduraTv.text = "Zona Queima de Gordura: ${freqCardMax * 0.6} - ${freqCardMax * 0.7}"
+                zonaAerobicaTv.text = "Zona Aeróbica: ${freqCardMax * 0.7} - ${freqCardMax * 0.8}"
+                zonaAnaerobicaTv.text = "Zona Anaeróbica: ${freqCardMax * 0.8} - ${freqCardMax * 0.9}"
             }
         }
 
